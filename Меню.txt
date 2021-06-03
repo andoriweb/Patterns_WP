@@ -1,0 +1,40 @@
+function.php
+/* Активируем меню */
+add_theme_support( 'menus' );
+
+header.php
+
+<nav>
+<?php
+              wp_nav_menu( [
+                /* В каком месте меню */
+                // 'theme_location'  => '',
+                /* Название меню */
+                'menu'            => 'Main',
+                /* Обёртка */ 
+                'container'       => false, 
+                // 'container_class' => '', 
+                // 'container_id'    => '',
+                'menu_class'      => 'header__nav', 
+                // 'menu_id'         => '',
+                /* Если true, то выводим как html вёрстка */
+                'echo'            => true,
+                /* Если несуществующее меню, то сработает этот скрипт */
+                'fallback_cb'     => 'wp_page_menu',
+                /* Добавить символ */
+                // 'before'          => '',
+                // 'after'           => '',
+                /* Добавить символ у ссылки */
+                // 'link_before'     => '',
+                // 'link_after'      => '',
+                /* Как будет обёрнута каждая ссылка */
+                // 'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'items_wrap'      => '<ul class="header__nav">%3$s</ul>',
+                /* Уровень вложенности меню */
+                'depth'           => 1,
+                /* Способ выведения меню на экран */
+                // 'walker'          => '',
+              ] );
+            ?>
+
+</nav>
