@@ -1,0 +1,38 @@
+<div class="about__img">
+	<!-- Картинка компании WP -->
+        <img src="<?php echo bloginfo('template_url');?>/assets/img/about.jpg" alt="про компанию">
+
+        <!-- Картинка в виде ссылки компании WP -->
+        <img src="
+		<?php the_field('about_img'); ?>
+	" alt="про компанию">
+
+        	<!-- Картинка в виде массива компании WP -->
+        	<?php
+                	$image = get_field('about_img');
+                        /* Проверяем, есть ли картинка в админке*/
+                        if (!empty($image)): ?>
+                            <img 
+                            src="<?php echo $image['url']; ?>" 
+                            alt="<?php echo $image['alt']; ?>">
+                        <?php endif;
+                        /* Посмотреть данные о массиве */
+                        // print_r($image);
+                  ?>
+</div>
+
+Картинка в слайдере
+url('<?php the_field('slider_img'); ?>')
+
+=======================================================
+
+Свои размеры картинок
+
+functions.php
+/* Размеры картинок */
+  add_image_size( 'image-thum', 360, 270, array( 'center', 'center' ) );
+  add_image_size( 'image-med', 360, 360, array( 'center', 'center' ) );
+  add_image_size( 'image-lar', 754, 400, array( 'center', 'center' ) );
+  
+ /* В разметку */
+ <?php the_post_thumbnail( 'image-lar' ); ?>
